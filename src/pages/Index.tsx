@@ -89,10 +89,99 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Why Hire Me Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <h2 className="text-4xl font-bold text-white mb-4 text-center">
+              Почему стоит взять меня?
+            </h2>
+            <p className="text-center text-purple-300 mb-12 text-lg">
+              Не просто строчки кода, а решение ваших задач
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card className="bg-gradient-to-br from-purple-900/40 to-slate-800/50 backdrop-blur-sm border-purple-500/30 p-8 hover:border-purple-400/60 transition-all duration-300 group">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    <Icon name="Zap" size={24} className="text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2">Быстрый результат</h3>
+                    <p className="text-gray-300">
+                      Не затягиваю дедлайны. Работаю по Agile методологии — вы видите прогресс каждый день. Первые результаты уже на следующей неделе.
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="bg-gradient-to-br from-pink-900/40 to-slate-800/50 backdrop-blur-sm border-purple-500/30 p-8 hover:border-purple-400/60 transition-all duration-300 group">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-500 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    <Icon name="Lightbulb" size={24} className="text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2">Думаю как предприниматель</h3>
+                    <p className="text-gray-300">
+                      Не просто пишу код — предлагаю решения, которые увеличат вашу прибыль. Понимаю бизнес-логику и метрики конверсии.
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="bg-gradient-to-br from-blue-900/40 to-slate-800/50 backdrop-blur-sm border-purple-500/30 p-8 hover:border-purple-400/60 transition-all duration-300 group">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    <Icon name="Users" size={24} className="text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2">Говорю на языке людей</h3>
+                    <p className="text-gray-300">
+                      Никаких технических сложностей для вас. Объясню всё простым языком и покажу, как всё работает. Всегда на связи.
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="bg-gradient-to-br from-orange-900/40 to-slate-800/50 backdrop-blur-sm border-purple-500/30 p-8 hover:border-purple-400/60 transition-all duration-300 group">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    <Icon name="Rocket" size={24} className="text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2">Код, который живёт</h3>
+                    <p className="text-gray-300">
+                      Создаю проекты, которые легко развивать. Чистый код, документация и возможность масштабировать без головной боли.
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            <div className="mt-12 text-center">
+              <Card className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border-2 border-purple-500/30 p-8 inline-block">
+                <div className="flex items-center gap-4 flex-wrap justify-center">
+                  <Icon name="Award" size={40} className="text-purple-400" />
+                  <div className="text-left">
+                    <p className="text-2xl font-bold text-white">5+ лет опыта</p>
+                    <p className="text-gray-300">50+ успешных проектов</p>
+                  </div>
+                  <div className="h-12 w-px bg-purple-500/30 hidden sm:block"></div>
+                  <div className="text-left">
+                    <p className="text-2xl font-bold text-white">100%</p>
+                    <p className="text-gray-300">довольных клиентов</p>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Skills Section */}
       <section className="py-20 px-4 bg-slate-800/30">
         <div className="max-w-6xl mx-auto">
-          <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl font-bold text-white mb-12 text-center">
               Технологии
             </h2>
@@ -115,7 +204,7 @@ const Index = () => {
       {/* Projects Section */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className={`transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl font-bold text-white mb-12 text-center">
               Проекты
             </h2>
