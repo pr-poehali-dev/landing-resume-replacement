@@ -5,270 +5,372 @@ import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     setIsVisible(true);
+    
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const skills = {
-    'Frontend': ['React', 'TypeScript', 'Next.js', 'Vue.js', 'Tailwind CSS', 'Redux', 'Zustand'],
-    'Backend': ['Node.js', 'Express', 'PostgreSQL', 'MongoDB', 'REST API', 'GraphQL'],
-    'Tools': ['Git', 'Docker', 'CI/CD', 'Webpack', 'Vite', 'Jest', 'Figma']
-  };
-
-  const experience = [
-    {
-      company: 'Tech Solutions Inc.',
-      position: 'Senior Frontend Developer',
-      period: '2022 - настоящее время',
-      description: 'Руководство командой из 4 разработчиков. Разработка и поддержка корпоративной CRM-системы на React/TypeScript.',
-      achievements: [
-        'Увеличил производительность приложения на 45% через оптимизацию рендеринга',
-        'Внедрил дизайн-систему, сократив время разработки новых фич на 30%',
-        'Провел 50+ code review и менторил 2 junior-разработчиков'
-      ]
-    },
-    {
-      company: 'Digital Agency Pro',
-      position: 'Frontend Developer',
-      period: '2020 - 2022',
-      description: 'Разработка веб-приложений и лендингов для клиентов агентства. Работа с дизайнерами и backend-командой.',
-      achievements: [
-        'Разработал 15+ проектов от прототипа до продакшена',
-        'Внедрил автоматизированное тестирование, снизив количество багов на 60%',
-        'Оптимизировал SEO, повысив позиции клиентов в поисковой выдаче'
-      ]
-    },
-    {
-      company: 'StartupLab',
-      position: 'Junior Frontend Developer',
-      period: '2019 - 2020',
-      description: 'Разработка пользовательских интерфейсов для MVP стартапов. Быстрая итерация и работа в условиях неопределенности.',
-      achievements: [
-        'Участвовал в разработке 8 MVP-проектов',
-        'Освоил современный стек: React, TypeScript, Git',
-        'Получил повышение через 8 месяцев работы'
-      ]
-    }
+  const skills = [
+    { name: 'React', level: 95, icon: '⚛️' },
+    { name: 'TypeScript', level: 90, icon: '📘' },
+    { name: 'Node.js', level: 85, icon: '🟢' },
+    { name: 'UI/UX', level: 88, icon: '🎨' },
+    { name: 'PostgreSQL', level: 80, icon: '🐘' },
+    { name: 'Git', level: 92, icon: '🔀' }
   ];
 
-  const education = [
+  const achievements = [
+    { number: '50+', label: 'Проектов запущено', icon: 'Rocket', color: 'from-blue-500 to-cyan-500' },
+    { number: '5+', label: 'Лет в разработке', icon: 'Award', color: 'from-purple-500 to-pink-500' },
+    { number: '200K+', label: 'Строк кода', icon: 'Code', color: 'from-orange-500 to-red-500' },
+    { number: '99%', label: 'Довольных клиентов', icon: 'Heart', color: 'from-green-500 to-emerald-500' }
+  ];
+
+  const timeline = [
     {
-      institution: 'Московский Государственный Университет',
-      degree: 'Бакалавр, Прикладная математика и информатика',
-      period: '2015 - 2019',
-      icon: 'GraduationCap'
+      year: '2024',
+      title: 'Senior Frontend Developer',
+      company: 'Tech Solutions Inc.',
+      description: 'Возглавил команду из 4 человек. Переписали легаси на TypeScript, внедрили микрофронтенды.',
+      highlight: '45% рост производительности'
     },
     {
-      institution: 'Онлайн-курсы',
-      degree: 'Frontend Developer Professional, Udemy',
-      period: '2019',
-      icon: 'BookOpen'
+      year: '2022',
+      title: 'Frontend Developer',
+      company: 'Digital Agency Pro',
+      description: 'Разрабатывал веб-приложения для e-commerce, fintech, edtech. От дизайна до деплоя.',
+      highlight: '15 проектов в продакшен'
+    },
+    {
+      year: '2020',
+      title: 'Junior Frontend Developer',
+      company: 'StartupLab',
+      description: 'Первый опыт в коммерческой разработке. Создавал MVP для стартапов, учился на практике.',
+      highlight: 'Повышение через 8 месяцев'
+    },
+    {
+      year: '2019',
+      title: 'Начало пути',
+      company: 'МГУ + Самообучение',
+      description: 'Закончил университет по специальности "Прикладная математика", начал изучать веб-разработку.',
+      highlight: 'Первый проект на React'
     }
   ];
 
   const projects = [
     {
-      name: 'Корпоративная CRM',
-      role: 'Tech Lead',
-      description: 'Система управления клиентами и продажами для компании с 500+ сотрудниками',
-      tech: ['React', 'TypeScript', 'PostgreSQL', 'WebSocket'],
-      impact: '40% рост эффективности отдела продаж'
+      title: 'Корпоративная CRM',
+      emoji: '📊',
+      description: 'Система управления клиентами и сделками для компании с 500+ сотрудников',
+      tech: ['React', 'TypeScript', 'WebSocket', 'PostgreSQL'],
+      impact: '40% рост продаж',
+      gradient: 'from-blue-600 to-cyan-600'
     },
     {
-      name: 'E-commerce платформа',
-      role: 'Frontend Developer',
-      description: 'Интернет-магазин с каталогом 50K+ товаров, корзиной и интеграцией платежей',
-      tech: ['Next.js', 'Redux', 'Stripe API', 'Tailwind'],
-      impact: 'GMV $2M+ в первый год'
+      title: 'E-commerce платформа',
+      emoji: '🛍️',
+      description: 'Маркетплейс с каталогом 50K товаров, корзиной, оплатой и рекомендациями',
+      tech: ['Next.js', 'Redux', 'Stripe', 'AI'],
+      impact: '$2M GMV за год',
+      gradient: 'from-purple-600 to-pink-600'
     },
     {
-      name: 'Аналитический дашборд',
-      role: 'Fullstack Developer',
-      description: 'Панель визуализации бизнес-метрик с real-time обновлениями',
-      tech: ['React', 'Node.js', 'Chart.js', 'WebSocket'],
-      impact: 'Используют 200+ пользователей ежедневно'
+      title: 'Образовательная платформа',
+      emoji: '🎓',
+      description: 'Онлайн-школа с видеокурсами, тестами, сертификатами и геймификацией',
+      tech: ['React', 'Video API', 'Analytics', 'Gamification'],
+      impact: '5K студентов',
+      gradient: 'from-orange-600 to-red-600'
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      <div className="max-w-5xl mx-auto px-4 py-12">
-        <header className={`bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
-            <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white text-5xl font-bold flex-shrink-0">
-              АР
-            </div>
-            
-            <div className="flex-1">
-              <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-2">Алексей Романов</h1>
-              <p className="text-2xl text-blue-600 mb-4 font-medium">Senior Frontend Developer</p>
-              
-              <div className="flex flex-wrap gap-4 text-slate-600">
-                <div className="flex items-center gap-2">
-                  <Icon name="MapPin" size={18} />
-                  <span>Москва</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Icon name="Mail" size={18} />
-                  <span>alexey.romanov@email.com</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Icon name="Phone" size={18} />
-                  <span>+7 (999) 123-45-67</span>
-                </div>
-              </div>
-              
-              <div className="flex gap-3 mt-4">
-                <a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">
-                  <Icon name="Github" size={24} />
-                </a>
-                <a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">
-                  <Icon name="Linkedin" size={24} />
-                </a>
-                <a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">
-                  <Icon name="Globe" size={24} />
-                </a>
-              </div>
-            </div>
+    <div className="min-h-screen bg-slate-950 text-white overflow-x-hidden">
+      <div 
+        className="fixed inset-0 opacity-30 pointer-events-none"
+        style={{
+          background: `radial-gradient(circle 800px at ${mousePosition.x}px ${mousePosition.y}px, rgba(139, 92, 246, 0.15), transparent)`
+        }}
+      />
 
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 gap-2 flex-shrink-0">
-              <Icon name="Download" size={20} />
-              Скачать PDF
+      <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-pink-500/20 rounded-full blur-3xl animate-pulse delay-500"></div>
+        </div>
+
+        <div className={`relative z-10 text-center max-w-6xl transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+          <div className="mb-8 inline-block relative">
+            <div className="w-40 h-40 rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-blue-500 p-1 animate-spin-slow">
+              <div className="w-full h-full rounded-full bg-slate-950 flex items-center justify-center">
+                <span className="text-6xl">👨‍💻</span>
+              </div>
+            </div>
+            <div className="absolute -bottom-2 -right-2 bg-green-500 w-12 h-12 rounded-full border-4 border-slate-950 flex items-center justify-center">
+              <span className="text-xl">✨</span>
+            </div>
+          </div>
+
+          <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full">
+            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            <span className="text-sm font-medium">Открыт для новых возможностей</span>
+          </div>
+
+          <h1 className="text-7xl md:text-9xl font-black mb-6 leading-none">
+            Алексей
+            <br />
+            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+              Романов
+            </span>
+          </h1>
+
+          <p className="text-2xl md:text-3xl text-gray-400 mb-4 font-light">
+            Senior Frontend Developer
+          </p>
+          
+          <p className="text-xl text-gray-500 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Превращаю идеи в живые веб-приложения. Пишу чистый код, который работает быстро и масштабируется легко.
+            <span className="text-purple-400"> Создаю продукты, которыми хочется пользоваться.</span>
+          </p>
+
+          <div className="flex flex-wrap gap-4 justify-center mb-16">
+            <Button size="lg" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 shadow-2xl shadow-purple-500/50 gap-2 text-lg px-10 py-6">
+              <Icon name="Mail" size={22} />
+              Написать мне
+            </Button>
+            <Button size="lg" variant="outline" className="border-2 border-white/20 hover:bg-white/5 backdrop-blur-sm gap-2 text-lg px-10 py-6">
+              <Icon name="Download" size={22} />
+              Скачать резюме
             </Button>
           </div>
-        </header>
 
-        <div className={`bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-            <Icon name="User" size={28} className="text-blue-600" />
-            О себе
-          </h2>
-          <p className="text-lg text-slate-700 leading-relaxed mb-4">
-            Frontend-разработчик с 5+ годами опыта создания высоконагруженных веб-приложений. 
-            Специализируюсь на React-экосистеме и современных подходах к разработке интерфейсов.
-          </p>
-          <p className="text-lg text-slate-700 leading-relaxed">
-            Имею опыт руководства командой, code review, менторинга junior-специалистов. 
-            Люблю решать сложные задачи и создавать продукты, которые упрощают жизнь пользователям.
-          </p>
-        </div>
-
-        <div className={`bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-3xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-            <Icon name="Code" size={28} className="text-blue-600" />
-            Навыки
-          </h2>
-          
-          <div className="space-y-6">
-            {Object.entries(skills).map(([category, items]) => (
-              <div key={category}>
-                <h3 className="text-xl font-semibold text-slate-800 mb-3">{category}</h3>
-                <div className="flex flex-wrap gap-2">
-                  {items.map((skill) => (
-                    <span key={skill} className="px-4 py-2 bg-blue-50 border border-blue-200 text-blue-700 rounded-lg font-medium">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
+          <div className="flex gap-6 justify-center">
+            <a href="#" className="text-gray-400 hover:text-white transition-all hover:scale-110">
+              <Icon name="Github" size={28} />
+            </a>
+            <a href="#" className="text-gray-400 hover:text-white transition-all hover:scale-110">
+              <Icon name="Linkedin" size={28} />
+            </a>
+            <a href="#" className="text-gray-400 hover:text-white transition-all hover:scale-110">
+              <Icon name="Twitter" size={28} />
+            </a>
+            <a href="#" className="text-gray-400 hover:text-white transition-all hover:scale-110">
+              <Icon name="Globe" size={28} />
+            </a>
           </div>
         </div>
+      </section>
 
-        <div className={`bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-8 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-3xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-            <Icon name="Briefcase" size={28} className="text-blue-600" />
-            Опыт работы
-          </h2>
-          
-          <div className="space-y-8">
-            {experience.map((job, index) => (
-              <div key={index} className="border-l-4 border-blue-600 pl-6">
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-2">
-                  <div>
-                    <h3 className="text-2xl font-bold text-slate-900">{job.position}</h3>
-                    <p className="text-xl text-blue-600 font-medium">{job.company}</p>
-                  </div>
-                  <span className="text-slate-600 font-medium mt-2 md:mt-0">{job.period}</span>
-                </div>
-                
-                <p className="text-slate-700 mb-3">{job.description}</p>
-                
-                <ul className="space-y-2">
-                  {job.achievements.map((achievement, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-slate-700">
-                      <Icon name="CheckCircle2" size={18} className="text-green-600 mt-1 flex-shrink-0" />
-                      <span>{achievement}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+      <section className="relative py-32 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-6xl font-black mb-6 bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">
+              Достижения в цифрах
+            </h2>
+            <p className="text-xl text-gray-400">Результаты, которыми горжусь</p>
           </div>
-        </div>
 
-        <div className={`bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-8 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-3xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-            <Icon name="FolderGit2" size={28} className="text-blue-600" />
-            Ключевые проекты
-          </h2>
-          
-          <div className="space-y-6">
-            {projects.map((project, index) => (
-              <Card key={index} className="border-2 border-slate-200 hover:border-blue-300 transition-all duration-300 p-6">
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="text-xl font-bold text-slate-900">{project.name}</h3>
-                    <span className="text-blue-600 font-medium">{project.role}</span>
-                  </div>
-                </div>
-                
-                <p className="text-slate-700 mb-4">{project.description}</p>
-                
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {project.tech.map((tech) => (
-                    <span key={tech} className="px-3 py-1 bg-slate-100 text-slate-700 rounded text-sm font-medium">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                
-                <div className="flex items-center gap-2 text-green-700 font-semibold">
-                  <Icon name="TrendingUp" size={18} />
-                  <span>{project.impact}</span>
+          <div className="grid md:grid-cols-4 gap-8">
+            {achievements.map((achievement, index) => (
+              <Card
+                key={index}
+                className={`bg-gradient-to-br ${achievement.color} p-1 hover:scale-105 transition-all duration-500`}
+              >
+                <div className="bg-slate-900 rounded-lg p-8 h-full">
+                  <Icon name={achievement.icon as any} size={48} className="text-white mb-4 mx-auto" />
+                  <div className="text-5xl font-black text-white mb-2 text-center">{achievement.number}</div>
+                  <p className="text-gray-300 text-center font-medium">{achievement.label}</p>
                 </div>
               </Card>
             ))}
           </div>
         </div>
+      </section>
 
-        <div className={`bg-white rounded-2xl shadow-lg p-8 md:p-12 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-3xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-            <Icon name="GraduationCap" size={28} className="text-blue-600" />
-            Образование
-          </h2>
-          
-          <div className="space-y-6">
-            {education.map((edu, index) => (
-              <div key={index} className="flex gap-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Icon name={edu.icon as any} size={24} className="text-blue-600" />
+      <section className="relative py-32 px-4 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-6xl font-black mb-6 bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">
+              Навыки и технологии
+            </h2>
+            <p className="text-xl text-gray-400">То, что я использую каждый день</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {skills.map((skill, index) => (
+              <div key={index} className="group">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-3">
+                    <span className="text-3xl group-hover:scale-125 transition-transform duration-300">{skill.icon}</span>
+                    <span className="text-xl font-bold">{skill.name}</span>
+                  </div>
+                  <span className="text-2xl font-bold text-purple-400">{skill.level}%</span>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900">{edu.degree}</h3>
-                  <p className="text-blue-600 font-medium">{edu.institution}</p>
-                  <span className="text-slate-600">{edu.period}</span>
+                <div className="h-3 bg-slate-800 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transition-all duration-1000 ease-out"
+                    style={{ width: isVisible ? `${skill.level}%` : '0%' }}
+                  />
                 </div>
               </div>
             ))}
           </div>
         </div>
+      </section>
 
-        <footer className="mt-8 text-center text-slate-600">
-          <p>© 2024 Алексей Романов. Резюме создано с использованием React + TypeScript</p>
-        </footer>
-      </div>
+      <section className="relative py-32 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-6xl font-black mb-6 bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">
+              Мой путь
+            </h2>
+            <p className="text-xl text-gray-400">От первой строки кода до Senior Developer</p>
+          </div>
+
+          <div className="relative">
+            <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 via-pink-500 to-blue-500 hidden md:block"></div>
+            
+            <div className="space-y-12">
+              {timeline.map((item, index) => (
+                <div key={index} className={`flex flex-col md:flex-row gap-8 items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                  <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
+                    <Card className="bg-slate-900/50 backdrop-blur border-white/10 p-8 hover:border-purple-500/50 transition-all duration-500 hover:scale-105">
+                      <div className="text-5xl font-black text-purple-400 mb-3">{item.year}</div>
+                      <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
+                      <p className="text-xl text-gray-400 mb-4 font-medium">{item.company}</p>
+                      <p className="text-gray-300 mb-4 leading-relaxed">{item.description}</p>
+                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full">
+                        <Icon name="TrendingUp" size={16} />
+                        <span className="text-sm font-semibold text-purple-300">{item.highlight}</span>
+                      </div>
+                    </Card>
+                  </div>
+                  
+                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0 z-10 border-4 border-slate-950">
+                    <Icon name="Star" size={28} className="text-white" />
+                  </div>
+                  
+                  <div className="flex-1 hidden md:block"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative py-32 px-4 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-6xl font-black mb-6 bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">
+              Избранные проекты
+            </h2>
+            <p className="text-xl text-gray-400">Работы, которыми действительно горжусь</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {projects.map((project, index) => (
+              <Card
+                key={index}
+                className="group bg-slate-900/50 backdrop-blur border-white/10 hover:border-purple-500/50 overflow-hidden transition-all duration-500 hover:scale-105 hover:-translate-y-2"
+              >
+                <div className={`h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-500"></div>
+                  <span className="text-8xl relative z-10 group-hover:scale-125 transition-transform duration-500">{project.emoji}</span>
+                </div>
+                
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
+                  <p className="text-gray-400 mb-4 leading-relaxed">{project.description}</p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tech.map((tech) => (
+                      <span key={tech} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-sm">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <div className="flex items-center gap-2 text-green-400 font-bold">
+                    <Icon name="Zap" size={18} />
+                    <span>{project.impact}</span>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative py-32 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl blur-2xl opacity-50"></div>
+            
+            <Card className="relative bg-gradient-to-br from-slate-900 to-slate-800 border-white/20 p-12 md:p-16">
+              <h2 className="text-5xl md:text-6xl font-black mb-6">
+                Давайте создадим
+                <br />
+                <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  что-то крутое?
+                </span>
+              </h2>
+              
+              <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Если вы ищете разработчика, который не просто пишет код, а создаёт продукты — напишите мне!
+              </p>
+              
+              <div className="flex flex-wrap gap-4 justify-center mb-10">
+                <Button size="lg" className="bg-white text-slate-900 hover:bg-gray-100 gap-2 text-lg px-10 py-6 shadow-2xl">
+                  <Icon name="Mail" size={22} />
+                  alexey.romanov@email.com
+                </Button>
+                <Button size="lg" variant="outline" className="border-2 border-white/20 hover:bg-white/5 gap-2 text-lg px-10 py-6">
+                  <Icon name="Phone" size={22} />
+                  +7 (999) 123-45-67
+                </Button>
+              </div>
+
+              <div className="flex gap-6 justify-center">
+                <a href="#" className="w-14 h-14 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all hover:scale-110">
+                  <Icon name="Github" size={24} />
+                </a>
+                <a href="#" className="w-14 h-14 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all hover:scale-110">
+                  <Icon name="Linkedin" size={24} />
+                </a>
+                <a href="#" className="w-14 h-14 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all hover:scale-110">
+                  <Icon name="MessageCircle" size={24} />
+                </a>
+                <a href="#" className="w-14 h-14 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all hover:scale-110">
+                  <Icon name="Globe" size={24} />
+                </a>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <footer className="py-10 px-4 border-t border-white/5 text-center text-gray-500">
+        <p>© 2024 Алексей Романов. Сделано с ❤️ на React + TypeScript</p>
+      </footer>
+
+      <style>{`
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+          animation: spin-slow 8s linear infinite;
+        }
+      `}</style>
     </div>
   );
 };
