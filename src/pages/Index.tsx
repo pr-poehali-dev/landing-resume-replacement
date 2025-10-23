@@ -10,326 +10,265 @@ const Index = () => {
     setIsVisible(true);
   }, []);
 
-  const stats = [
-    { number: '50+', label: 'Проектов', icon: 'Briefcase' },
-    { number: '5+', label: 'Лет опыта', icon: 'Calendar' },
-    { number: '30+', label: 'Клиентов', icon: 'Users' },
-    { number: '100%', label: 'Качество', icon: 'Award' }
+  const skills = {
+    'Frontend': ['React', 'TypeScript', 'Next.js', 'Vue.js', 'Tailwind CSS', 'Redux', 'Zustand'],
+    'Backend': ['Node.js', 'Express', 'PostgreSQL', 'MongoDB', 'REST API', 'GraphQL'],
+    'Tools': ['Git', 'Docker', 'CI/CD', 'Webpack', 'Vite', 'Jest', 'Figma']
+  };
+
+  const experience = [
+    {
+      company: 'Tech Solutions Inc.',
+      position: 'Senior Frontend Developer',
+      period: '2022 - настоящее время',
+      description: 'Руководство командой из 4 разработчиков. Разработка и поддержка корпоративной CRM-системы на React/TypeScript.',
+      achievements: [
+        'Увеличил производительность приложения на 45% через оптимизацию рендеринга',
+        'Внедрил дизайн-систему, сократив время разработки новых фич на 30%',
+        'Провел 50+ code review и менторил 2 junior-разработчиков'
+      ]
+    },
+    {
+      company: 'Digital Agency Pro',
+      position: 'Frontend Developer',
+      period: '2020 - 2022',
+      description: 'Разработка веб-приложений и лендингов для клиентов агентства. Работа с дизайнерами и backend-командой.',
+      achievements: [
+        'Разработал 15+ проектов от прототипа до продакшена',
+        'Внедрил автоматизированное тестирование, снизив количество багов на 60%',
+        'Оптимизировал SEO, повысив позиции клиентов в поисковой выдаче'
+      ]
+    },
+    {
+      company: 'StartupLab',
+      position: 'Junior Frontend Developer',
+      period: '2019 - 2020',
+      description: 'Разработка пользовательских интерфейсов для MVP стартапов. Быстрая итерация и работа в условиях неопределенности.',
+      achievements: [
+        'Участвовал в разработке 8 MVP-проектов',
+        'Освоил современный стек: React, TypeScript, Git',
+        'Получил повышение через 8 месяцев работы'
+      ]
+    }
   ];
 
-  const services = [
+  const education = [
     {
-      icon: 'Layout',
-      title: 'Веб-разработка',
-      description: 'Создаю современные сайты и веб-приложения с нуля. От лендинга до сложных платформ.',
-      features: ['React/TypeScript', 'Адаптивный дизайн', 'SEO оптимизация']
+      institution: 'Московский Государственный Университет',
+      degree: 'Бакалавр, Прикладная математика и информатика',
+      period: '2015 - 2019',
+      icon: 'GraduationCap'
     },
     {
-      icon: 'Smartphone',
-      title: 'UI/UX дизайн',
-      description: 'Проектирую интерфейсы, которые нравятся пользователям и работают на бизнес.',
-      features: ['Прототипирование', 'Дизайн-система', 'Тестирование']
-    },
-    {
-      icon: 'Database',
-      title: 'Backend & API',
-      description: 'Разрабатываю серверную логику и интеграции с любыми сервисами.',
-      features: ['REST API', 'База данных', 'Безопасность']
+      institution: 'Онлайн-курсы',
+      degree: 'Frontend Developer Professional, Udemy',
+      period: '2019',
+      icon: 'BookOpen'
     }
   ];
 
   const projects = [
     {
-      title: 'Маркетплейс электроники',
-      description: 'Полнофункциональный интернет-магазин с каталогом 10000+ товаров, корзиной, оплатой и личным кабинетом',
-      image: '🛒',
-      tech: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
-      metrics: { users: '50K+', conversion: '+40%', time: '3 мес' }
+      name: 'Корпоративная CRM',
+      role: 'Tech Lead',
+      description: 'Система управления клиентами и продажами для компании с 500+ сотрудниками',
+      tech: ['React', 'TypeScript', 'PostgreSQL', 'WebSocket'],
+      impact: '40% рост эффективности отдела продаж'
     },
     {
-      title: 'CRM для агентства недвижимости',
-      description: 'Система управления сделками, клиентами и объектами. Автоматизация бизнес-процессов на 70%',
-      image: '🏢',
-      tech: ['TypeScript', 'REST API', 'WebSocket', 'PostgreSQL'],
-      metrics: { users: '200+', efficiency: '+70%', time: '4 мес' }
+      name: 'E-commerce платформа',
+      role: 'Frontend Developer',
+      description: 'Интернет-магазин с каталогом 50K+ товаров, корзиной и интеграцией платежей',
+      tech: ['Next.js', 'Redux', 'Stripe API', 'Tailwind'],
+      impact: 'GMV $2M+ в первый год'
     },
     {
-      title: 'Образовательная платформа',
-      description: 'Онлайн-школа с видеокурсами, тестами, вебинарами и системой геймификации',
-      image: '🎓',
-      tech: ['React', 'Video API', 'Analytics', 'Payment'],
-      metrics: { students: '5K+', completion: '85%', time: '5 мес' }
+      name: 'Аналитический дашборд',
+      role: 'Fullstack Developer',
+      description: 'Панель визуализации бизнес-метрик с real-time обновлениями',
+      tech: ['React', 'Node.js', 'Chart.js', 'WebSocket'],
+      impact: 'Используют 200+ пользователей ежедневно'
     }
-  ];
-
-  const testimonials = [
-    {
-      name: 'Дмитрий Соколов',
-      role: 'CEO, TechStart',
-      text: 'Алексей сделал нам MVP за 3 недели. Сейчас у нас 10К пользователей и раунд инвестиций закрыт.',
-      avatar: '👨‍💼'
-    },
-    {
-      name: 'Елена Морозова',
-      role: 'Основатель, Fashion Boutique',
-      text: 'Продажи выросли в 2 раза после запуска нового сайта. Алексей учёл все пожелания и сделал больше.',
-      avatar: '👩‍💼'
-    },
-    {
-      name: 'Игорь Петров',
-      role: 'CTO, FinanceApp',
-      text: 'Профессионал своего дела. Чистый код, документация, уложился в сроки. Рекомендую!',
-      avatar: '👨‍💻'
-    }
-  ];
-
-  const process = [
-    { step: '01', title: 'Обсуждение', desc: 'Разбираем задачу и бизнес-цели', icon: 'MessageSquare' },
-    { step: '02', title: 'Прототип', desc: 'Показываю макет за 2-3 дня', icon: 'Figma' },
-    { step: '03', title: 'Разработка', desc: 'Спринты по 1-2 недели с демо', icon: 'Code' },
-    { step: '04', title: 'Запуск', desc: 'Тестирование и публикация', icon: 'Rocket' }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950">
-      <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-pink-500/5"></div>
-        
-        <div className={`relative z-10 text-center max-w-5xl transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="inline-block mb-6">
-            <div className="relative">
-              <div className="w-32 h-32 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full animate-pulse"></div>
-              <div className="absolute inset-2 bg-slate-950 rounded-full flex items-center justify-center">
-                <span className="text-5xl">👨‍💻</span>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+      <div className="max-w-5xl mx-auto px-4 py-12">
+        <header className={`bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
+            <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white text-5xl font-bold flex-shrink-0">
+              АР
+            </div>
+            
+            <div className="flex-1">
+              <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-2">Алексей Романов</h1>
+              <p className="text-2xl text-blue-600 mb-4 font-medium">Senior Frontend Developer</p>
+              
+              <div className="flex flex-wrap gap-4 text-slate-600">
+                <div className="flex items-center gap-2">
+                  <Icon name="MapPin" size={18} />
+                  <span>Москва</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Icon name="Mail" size={18} />
+                  <span>alexey.romanov@email.com</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Icon name="Phone" size={18} />
+                  <span>+7 (999) 123-45-67</span>
+                </div>
+              </div>
+              
+              <div className="flex gap-3 mt-4">
+                <a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">
+                  <Icon name="Github" size={24} />
+                </a>
+                <a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">
+                  <Icon name="Linkedin" size={24} />
+                </a>
+                <a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">
+                  <Icon name="Globe" size={24} />
+                </a>
               </div>
             </div>
-          </div>
-          
-          <div className="mb-4 inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-full">
-            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-            <span className="text-purple-300 text-sm font-medium">Открыт для проектов</span>
-          </div>
 
-          <h1 className="text-6xl md:text-8xl font-black text-white mb-6 leading-tight">
-            Создаю продукты,<br />
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent animate-pulse">
-              которые работают
-            </span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Fullstack-разработчик, который превращает идеи в прибыльные веб-приложения. 
-            <span className="text-purple-400 font-semibold"> От дизайна до запуска.</span>
-          </p>
-          
-          <div className="flex flex-wrap gap-4 justify-center mb-16">
-            <Button size="lg" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white shadow-lg shadow-purple-500/50 gap-2 text-lg px-8">
-              <Icon name="Send" size={20} />
-              Обсудить проект
-            </Button>
-            <Button size="lg" variant="outline" className="border-2 border-purple-500/50 text-purple-300 hover:bg-purple-500/10 gap-2 text-lg px-8">
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 gap-2 flex-shrink-0">
               <Icon name="Download" size={20} />
-              Резюме
+              Скачать PDF
             </Button>
           </div>
+        </header>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            {stats.map((stat, index) => (
-              <Card key={index} className="bg-slate-900/50 backdrop-blur border-purple-500/20 p-6 hover:border-purple-500/50 transition-all duration-300">
-                <Icon name={stat.icon as any} size={28} className="text-purple-400 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-white mb-1">{stat.number}</div>
-                <div className="text-sm text-gray-400">{stat.label}</div>
-              </Card>
+        <div className={`bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+            <Icon name="User" size={28} className="text-blue-600" />
+            О себе
+          </h2>
+          <p className="text-lg text-slate-700 leading-relaxed mb-4">
+            Frontend-разработчик с 5+ годами опыта создания высоконагруженных веб-приложений. 
+            Специализируюсь на React-экосистеме и современных подходах к разработке интерфейсов.
+          </p>
+          <p className="text-lg text-slate-700 leading-relaxed">
+            Имею опыт руководства командой, code review, менторинга junior-специалистов. 
+            Люблю решать сложные задачи и создавать продукты, которые упрощают жизнь пользователям.
+          </p>
+        </div>
+
+        <div className={`bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-3xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+            <Icon name="Code" size={28} className="text-blue-600" />
+            Навыки
+          </h2>
+          
+          <div className="space-y-6">
+            {Object.entries(skills).map(([category, items]) => (
+              <div key={category}>
+                <h3 className="text-xl font-semibold text-slate-800 mb-3">{category}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {items.map((skill) => (
+                    <span key={skill} className="px-4 py-2 bg-blue-50 border border-blue-200 text-blue-700 rounded-lg font-medium">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>
-      </section>
 
-      <section className="py-24 px-4 bg-slate-900/30">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-white mb-4">Что я делаю</h2>
-            <p className="text-xl text-gray-400">Полный цикл разработки веб-проектов</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <Card 
-                key={index}
-                className="bg-gradient-to-br from-slate-900/80 to-slate-800/50 backdrop-blur border-purple-500/20 p-8 hover:border-purple-400/60 transition-all duration-500 hover:-translate-y-2 group"
-              >
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Icon name={service.icon as any} size={32} className="text-white" />
+        <div className={`bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-8 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-3xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+            <Icon name="Briefcase" size={28} className="text-blue-600" />
+            Опыт работы
+          </h2>
+          
+          <div className="space-y-8">
+            {experience.map((job, index) => (
+              <div key={index} className="border-l-4 border-blue-600 pl-6">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-2">
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-900">{job.position}</h3>
+                    <p className="text-xl text-blue-600 font-medium">{job.company}</p>
+                  </div>
+                  <span className="text-slate-600 font-medium mt-2 md:mt-0">{job.period}</span>
                 </div>
                 
-                <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
-                <p className="text-gray-400 mb-6 leading-relaxed">{service.description}</p>
+                <p className="text-slate-700 mb-3">{job.description}</p>
                 
                 <ul className="space-y-2">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-purple-300">
-                      <Icon name="Check" size={16} />
-                      <span>{feature}</span>
+                  {job.achievements.map((achievement, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-slate-700">
+                      <Icon name="CheckCircle2" size={18} className="text-green-600 mt-1 flex-shrink-0" />
+                      <span>{achievement}</span>
                     </li>
                   ))}
                 </ul>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
-      </section>
 
-      <section className="py-24 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-white mb-4">Избранные проекты</h2>
-            <p className="text-xl text-gray-400">Кейсы, которыми горжусь</p>
-          </div>
-
-          <div className="space-y-8">
+        <div className={`bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-8 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-3xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+            <Icon name="FolderGit2" size={28} className="text-blue-600" />
+            Ключевые проекты
+          </h2>
+          
+          <div className="space-y-6">
             {projects.map((project, index) => (
-              <Card
-                key={index}
-                className={`bg-gradient-to-r ${
-                  index % 2 === 0 
-                    ? 'from-purple-900/20 to-slate-900/50' 
-                    : 'from-pink-900/20 to-slate-900/50'
-                } backdrop-blur border-purple-500/30 overflow-hidden hover:border-purple-400/60 transition-all duration-500 group`}
-              >
-                <div className="grid md:grid-cols-2 gap-8 p-8 md:p-12">
-                  <div className="flex flex-col justify-center">
-                    <h3 className="text-3xl font-bold text-white mb-4">{project.title}</h3>
-                    <p className="text-gray-300 text-lg mb-6 leading-relaxed">{project.description}</p>
-                    
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.tech.map((tech, idx) => (
-                        <span key={idx} className="px-4 py-2 bg-purple-500/20 border border-purple-500/30 text-purple-300 rounded-full text-sm font-medium">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="grid grid-cols-3 gap-4">
-                      {Object.entries(project.metrics).map(([key, value]) => (
-                        <div key={key}>
-                          <div className="text-2xl font-bold text-purple-400">{value}</div>
-                          <div className="text-sm text-gray-400 capitalize">{key}</div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-center">
-                    <div className="text-9xl group-hover:scale-110 transition-transform duration-500">
-                      {project.image}
-                    </div>
+              <Card key={index} className="border-2 border-slate-200 hover:border-blue-300 transition-all duration-300 p-6">
+                <div className="flex items-start justify-between mb-3">
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900">{project.name}</h3>
+                    <span className="text-blue-600 font-medium">{project.role}</span>
                   </div>
                 </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 px-4 bg-slate-900/30">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-white mb-4">Как я работаю</h2>
-            <p className="text-xl text-gray-400">Прозрачный процесс от идеи до запуска</p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-6">
-            {process.map((item, index) => (
-              <div key={index} className="relative">
-                {index < process.length - 1 && (
-                  <div className="hidden md:block absolute top-12 left-1/2 w-full h-0.5 bg-gradient-to-r from-purple-500 to-pink-500"></div>
-                )}
                 
-                <Card className="bg-slate-900/50 backdrop-blur border-purple-500/30 p-6 hover:border-purple-400/60 transition-all duration-300 relative z-10">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-4 mx-auto">
-                    <Icon name={item.icon as any} size={24} className="text-white" />
-                  </div>
-                  <div className="text-4xl font-black text-purple-500/30 mb-2">{item.step}</div>
-                  <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                  <p className="text-gray-400 text-sm">{item.desc}</p>
-                </Card>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-white mb-4">Отзывы клиентов</h2>
-            <p className="text-xl text-gray-400">Что говорят те, с кем работал</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="bg-slate-900/50 backdrop-blur border-purple-500/20 p-8 hover:border-purple-400/60 transition-all duration-300">
-                <div className="text-5xl mb-4">{testimonial.avatar}</div>
-                <p className="text-gray-300 mb-6 leading-relaxed italic">"{testimonial.text}"</p>
-                <div>
-                  <div className="font-bold text-white">{testimonial.name}</div>
-                  <div className="text-sm text-purple-400">{testimonial.role}</div>
+                <p className="text-slate-700 mb-4">{project.description}</p>
+                
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {project.tech.map((tech) => (
+                    <span key={tech} className="px-3 py-1 bg-slate-100 text-slate-700 rounded text-sm font-medium">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                
+                <div className="flex items-center gap-2 text-green-700 font-semibold">
+                  <Icon name="TrendingUp" size={18} />
+                  <span>{project.impact}</span>
                 </div>
               </Card>
             ))}
           </div>
         </div>
-      </section>
 
-      <section className="py-24 px-4">
-        <div className="max-w-4xl mx-auto">
-          <Card className="bg-gradient-to-r from-purple-600 to-pink-600 p-12 md:p-16 text-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent"></div>
-            
-            <div className="relative z-10">
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Готов воплотить вашу идею?
-              </h2>
-              <p className="text-white/90 text-xl mb-10 leading-relaxed">
-                Обсудим проект бесплатно. Отвечаю в течение часа.
-              </p>
-              
-              <div className="flex flex-wrap gap-4 justify-center mb-12">
-                <Button size="lg" variant="secondary" className="gap-2 text-lg px-8 shadow-xl">
-                  <Icon name="Mail" size={20} />
-                  Email
-                </Button>
-                <Button size="lg" variant="secondary" className="gap-2 text-lg px-8 shadow-xl">
-                  <Icon name="MessageCircle" size={20} />
-                  Telegram
-                </Button>
-                <Button size="lg" variant="secondary" className="gap-2 text-lg px-8 shadow-xl">
-                  <Icon name="Phone" size={20} />
-                  Позвонить
-                </Button>
+        <div className={`bg-white rounded-2xl shadow-lg p-8 md:p-12 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-3xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+            <Icon name="GraduationCap" size={28} className="text-blue-600" />
+            Образование
+          </h2>
+          
+          <div className="space-y-6">
+            {education.map((edu, index) => (
+              <div key={index} className="flex gap-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Icon name={edu.icon as any} size={24} className="text-blue-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900">{edu.degree}</h3>
+                  <p className="text-blue-600 font-medium">{edu.institution}</p>
+                  <span className="text-slate-600">{edu.period}</span>
+                </div>
               </div>
-
-              <div className="flex flex-wrap gap-6 justify-center">
-                <a href="#" className="text-white/80 hover:text-white transition-colors">
-                  <Icon name="Github" size={24} />
-                </a>
-                <a href="#" className="text-white/80 hover:text-white transition-colors">
-                  <Icon name="Linkedin" size={24} />
-                </a>
-                <a href="#" className="text-white/80 hover:text-white transition-colors">
-                  <Icon name="Twitter" size={24} />
-                </a>
-              </div>
-            </div>
-          </Card>
+            ))}
+          </div>
         </div>
-      </section>
 
-      <footer className="py-8 px-4 border-t border-purple-500/20">
-        <div className="max-w-6xl mx-auto text-center text-gray-400">
-          <p>© 2024 Алексей Романов. Все права защищены.</p>
-        </div>
-      </footer>
+        <footer className="mt-8 text-center text-slate-600">
+          <p>© 2024 Алексей Романов. Резюме создано с использованием React + TypeScript</p>
+        </footer>
+      </div>
     </div>
   );
 };
